@@ -1,0 +1,21 @@
+button {
+  font-size: 20px;
+  padding: 5px 20px;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* tr elements within thead elements */
+thead tr {
+  background-color: black;
+  color: white;
+}
+
+/* odd tr elements within tbody elements */
+tbody tr:nth-child(odd) {
+  background-color: #d2d2d2;
+}
