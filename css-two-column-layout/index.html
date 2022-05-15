@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CSS Challenge - Two Column Layout</title>
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row flex-center">
+      <!-- h1 and p -->
+      <div class="column-60 text-center">
+        <h1 class="font-karla black-text">SCALE, SPEED, AGILITY</h1>
+        <p class="font-karla grey-text">
+          We've dedicated thousands of man hours to making healthcare institutions
+          in the Helium network run 10x more efficiently and deliver an unparalleled
+          quality of care.
+        </p>
+      </div>
+    </div>
+    <div class="row padding-top-20">
+      <!-- icon/cards -->
+      <div class="column-1-2 padding-rb">
+        <div class="row">
+          <div class="column-1-4">
+            <img class="card-image" src="images/software.svg" alt="Africa">
+          </div>
+          <div class="column-3-4">
+            <h3 class="font-karla black-text">INTUITIVE, <br>SMART SOFTWARE</h3>
+            <p class="font-karla grey-text">
+              We build products that transform how healthcare facilities run across
+              Africa -- making them radically more efficient operationally and
+              financially, a complete turnaround.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="column-1-2 padding-rb">
+        <div class="row">
+          <div class="column-1-4">
+            <img class="card-image" src="images/practice.svg" alt="Heart Stethoscope">
+          </div>
+          <div class="column-3-4">
+            <h3 class="font-karla black-text">PRACTICE MEDICINE, NOT ADMINISTRATION</h3>
+            <p class="font-karla grey-text">
+              Our all-in-one electronic health records (EHR), hospital management (HMIS)
+              &amp; billing system helps streamline your facility, reduce waste
+              and improve quality of care.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="column-1-2 padding-rb">
+        <div class="row">
+          <div class="column-1-4">
+            <img class="card-image" src="images/circumstance.svg" alt="Two perpendicular orbiting spheres">
+          </div>
+          <div class="column-3-4">
+            <h3 class="font-karla black-text">FOR ANY CIRCUMSTANCE</h3>
+            <p class="font-karla grey-text">
+              Our intuitive system is built around the peculiarities of your facility;
+              we support offline deployments, sync to the cloud and run on any
+              device 24/7.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="column-1-2 padding-rb">
+        <div class="row">
+          <div class="column-1-4">
+            <img class="card-image" src="images/data.svg" alt="Graph diagram">
+          </div>
+          <div class="column-3-4">
+            <h3 class="font-karla black-text">DATA THAT TRANSFORMS</h3>
+            <p class="font-karla grey-text">
+              We understand your facility better than you do; we provide visually-
+              appealing real-time analytics, reports and trends at your finger tips.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row flex-center">
+      <!-- button -->
+      <div class="column-full text-center">
+        <button class="orange-button font-karla bold-text">LEARN MORE</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

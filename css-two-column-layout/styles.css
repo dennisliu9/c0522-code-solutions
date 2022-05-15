@@ -1,0 +1,107 @@
+h1 {
+  font-size: 3rem;
+  margin-top: 4rem;
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.4rem;
+}
+
+h3 {
+  margin-top: 2rem;
+}
+
+h1,
+h3 {
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+h3,
+p,
+button {
+  font-size: 0.9rem;
+}
+
+/* layout classes */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column-full {
+  width: 100%;
+}
+
+.column-60 {
+  width: 60%;
+}
+
+.column-1-2 {
+  width: 50%;
+}
+
+.column-1-4 {
+  width: 25%;
+}
+
+.column-3-4 {
+  width: 75%;
+}
+
+/* text classes */
+.font-karla {
+  font-family: Karla, sans-serif;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* .normal-text {
+  font-size: 0.9rem;
+} */
+
+.bold-text {
+  font-weight: bold;
+}
+
+.black-text {
+  color: #0e0e0e;
+}
+
+.grey-text {
+  color: #454545;
+}
+
+/* other */
+.flex-center {
+  justify-content: center;
+}
+
+.padding-rb {
+  padding-right: 100px;
+  padding-bottom: 30px;
+}
+
+.padding-top-20 {
+  padding-top: 20px;
+}
+
+.orange-button {
+  border-style: solid;
+  border-color: #d14c45;
+  background-color: white;
+  color: #d14c45;
+  padding: 8px 40px;
+}
+
+.card-image {
+  max-height: 100px;
+}
