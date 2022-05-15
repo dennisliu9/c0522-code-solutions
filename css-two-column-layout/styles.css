@@ -8,6 +8,10 @@ p {
   line-height: 1.4rem;
 }
 
+h3 {
+  margin-top: 2rem;
+}
+
 h1,
 h3 {
   letter-spacing: 1px;
@@ -28,6 +32,7 @@ button {
 
 .row {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .column-full {
@@ -36,6 +41,18 @@ button {
 
 .column-60 {
   width: 60%;
+}
+
+.column-1-2 {
+  width: 50%;
+}
+
+.column-1-4 {
+  width: 25%;
+}
+
+.column-3-4 {
+  width: 75%;
 }
 
 /* text classes */
@@ -68,6 +85,15 @@ button {
   justify-content: center;
 }
 
+.padding-rb {
+  padding-right: 100px;
+  padding-bottom: 30px;
+}
+
+.padding-top-20 {
+  padding-top: 20px;
+}
+
 .orange-button {
   border-style: solid;
   border-color: #d14c45;
@@ -76,29 +102,6 @@ button {
   padding: 8px 40px;
 }
 
-.cards-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 30px 0;
-}
-
-.card {
-  flex-basis: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  padding: 20px 50px;
-}
-
 .card-image {
   max-height: 100px;
-}
-
-.card-text {
-  /*
-  Doesn't do anything here except for the div
-  stacking elements. Could be used in the future
-  for some uses?
-  */
 }
