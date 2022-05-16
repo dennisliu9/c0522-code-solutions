@@ -214,12 +214,3 @@ h2 {
   width: 100%;
   height: 100%;
 }
-
-/*
-  Line below the header should extend to the end
-  Contact Us button should be against the side (li margin-right: 0;)
-  --Make nav-lists need an extra class to say horizontal, go vertical by default (or vice versa)
-    Make horizontal nav lists something you align to one side and then space items out
-  pad the "Company info and links" columns to get the right spacing
-    p's have margin, making the right side appear shorter than the left
-*/
