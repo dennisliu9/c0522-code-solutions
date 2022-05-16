@@ -1,0 +1,225 @@
+button {
+  border-style: none;
+  border-radius: 5%;
+  background-color: #294464;
+  color: white;
+}
+
+p {
+  font-size: 12px;
+  line-height: 1.3rem;
+}
+
+h1,
+h2 {
+  margin-bottom: 10px;
+}
+
+/* Layout classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.column-full {
+  width: 100%;
+}
+
+.column-1-2 {
+  width: 50%;
+}
+
+.column-2-5 {
+  width: 40%;
+}
+
+.column-1-3 {
+  width: calc(100% / 3);
+}
+
+/* Utility classes */
+.flex-col {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-wrap-on {
+  flex-wrap: wrap;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.border-bottom-grey {
+  border-bottom: 2px solid #e7e9ec;
+}
+
+.margin-lr-70 {
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.margin-tb-70 {
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.margin-tb-40 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.margin-b-40 {
+  margin-bottom: 40px;
+}
+
+.margin-b-70 {
+  margin-bottom: 70px;
+}
+
+.padding-tb-10 {
+  padding: 10px 0;
+}
+
+.pos-abs {
+  position: absolute;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.disp-ib {
+  display: inline-block;
+}
+
+.avenir-font {
+  font-family: Avenir, sans-serif;
+}
+
+.tiempos-font {
+  font-family: "Tiempos Headline", serif;
+  font-weight: normal;
+}
+
+.bold-font {
+  font-weight: bold;
+}
+
+.dark-grey-text {
+  color: #6e6e6e;
+}
+
+.light-grey-text {
+  color: #a0a0a0;
+}
+
+.white-text {
+  color: white;
+}
+
+.light-grey-background {
+  background-color: #fafafa;
+}
+
+.dark-grey-background {
+  background-color: #525351;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Semantic/Other Classes */
+
+.nav-list {
+  list-style-type: none;
+  display: inline;
+  padding-left: 0;
+}
+
+/* --Make a nav list horizontal */
+.horiz-nav > li {
+  display: inline;
+  margin-left: 20px;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-list a:hover {
+  /* make link brighter on hover (<100% for darker), cool! */
+  filter: brightness(130%);
+}
+
+.nav-list > li:not(:last-child) {
+  /*
+  Suggestion to exclude bottom margin for last child:
+  stackoverflow.com/questions/19254411/how-do-i-set-vertical-space-between-list-items
+  */
+  margin-bottom: 16px;
+}
+
+.link-button {
+  list-style-type: none;
+  border-style: none;
+  border-radius: 5px;
+  background-color: #294464;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+/* --Two types of buttons on the pages, one wider than the other */
+.wide-button {
+  padding: 0.7rem 2rem;
+}
+
+.logo-sizing {
+  max-height: 25px;
+  align-self: center;
+}
+
+.hero-sect {
+  background-image: url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+
+  /* This is the size of the hero section, and images will __fit the section__ as we desired. */
+  width: 100%;
+  height: 520px;
+}
+
+.overlay {
+  background: rgb(97 97 97 / 50%);
+  width: 100%;
+  height: 100%;
+}
+
+/*
+  Line below the header should extend to the end
+  Contact Us button should be against the side (li margin-right: 0;)
+  --Make nav-lists need an extra class to say horizontal, go vertical by default (or vice versa)
+    Make horizontal nav lists something you align to one side and then space items out
+  pad the "Company info and links" columns to get the right spacing
+    p's have margin, making the right side appear shorter than the left
+*/
