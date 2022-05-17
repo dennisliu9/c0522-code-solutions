@@ -119,6 +119,10 @@ h2 {
   font-weight: bold;
 }
 
+.italic-font {
+  font-style: italic;
+}
+
 .dark-grey-text {
   color: #6e6e6e;
 }
