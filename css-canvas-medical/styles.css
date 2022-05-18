@@ -227,6 +227,7 @@ h2 {
   height: 100%;
 }
 
-.current-page-link {
+.highlighted-link {
   color: #294464;
+  text-decoration: none;
 }
