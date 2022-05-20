@@ -63,6 +63,12 @@ h2 {
   align-items: center;
 }
 
+.dir-col-just-center {
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
 .border-bottom-grey {
   border-bottom: 2px solid #e7e9ec;
 }
