@@ -1,5 +1,37 @@
 /* exported swapChars */
 /*
+New Alternative:
+Create a variable to hold the character at the first index
+Create a variable to hold the character at the second index
+Create a variable with an empty string value to hold the result
+Loop through the string
+  If index === first index
+    Concatenate the character at the first index to the final result string
+  Else If index === second index
+    Concatenate the character at the second index to the final result string
+  Otherwise (Else)
+    Concatenate the character at that index to the result string
+return the result string
+*/
+
+function swapChars(firstIndex, secondIndex, string) {
+  var firstChar = string[firstIndex];
+  var secondChar = string[secondIndex];
+  var swappedString = '';
+
+  for (var charIdx = 0; charIdx < string.length; charIdx++) {
+    if (charIdx === firstIndex) {
+      swappedString += secondChar;
+    } else if (charIdx === secondIndex) {
+      swappedString += firstChar;
+    } else {
+      swappedString += string[charIdx];
+    }
+  }
+  return swappedString;
+}
+
+/*
 Reminder: slice(index to start slicing at, first index to *exclude* from the slice)
 
 Create a variable to hold the character at string[firstIndex]
@@ -20,6 +52,8 @@ Concatenate these variables together
   preFirstIndexStr + secondChar + betweenIndicesStr + firstChar + postSecondIndexStr
 return that value
 */
+/* First attempt
+
 function swapChars(firstIndex, secondIndex, string) {
   var firstChar = string[firstIndex];
   var secondChar = string[secondIndex];
@@ -39,3 +73,4 @@ function swapChars(firstIndex, secondIndex, string) {
 
   return preFirstIndexStr + secondChar + betweenIndicesStr + firstChar + postSecondIndexStr;
 }
+*/
