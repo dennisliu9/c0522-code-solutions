@@ -6,7 +6,7 @@ button {
 }
 
 p {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.3rem;
 }
 
@@ -155,6 +155,11 @@ h2 {
   text-align: center;
 }
 
+.constrain-img-to-col-width {
+  object-fit: contain;
+  width: 100%;
+}
+
 /* Semantic/Other Classes */
 
 .nav-list {
@@ -214,7 +219,7 @@ h2 {
 
   /* This is the size of the hero section, and images will __fit the section__ as we desired. */
   width: 100%;
-  height: 520px;
+  height: 450px;
 }
 
 .img-index {
@@ -235,5 +240,3 @@ h2 {
   color: #294464;
   text-decoration: none;
 }
-
-/* Set a max width of the product card images */
