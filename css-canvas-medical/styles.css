@@ -147,6 +147,10 @@ h2 {
   font-size: 16px;
 }
 
+.font-12 {
+  font-size: 12px;
+}
+
 .text-center {
   text-align: center;
 }
@@ -231,3 +235,5 @@ h2 {
   color: #294464;
   text-decoration: none;
 }
+
+/* Set a max width of the product card images */
