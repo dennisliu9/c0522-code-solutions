@@ -23,11 +23,9 @@ Set up the card deck by looping through all ranks and all suits, pushing them in
 
 // deal cards to players
 Write function for dealing cards, taking in player objects, cards per player, and a card deck
-  Determine number of deal iterations (handing one card to one player) by
-    multiplying number of players by number of cards per player (dealIters)
-  Create a loop that loops from 0 -> <dealIters
-    .pop a card from the deck and push it into the hand property of the player object
-    Access the same n number of players in order by using dealIdx % playersOjbectsArray.length
+  Loop through the array of player objects
+    For each player, splice 2 cards from the beginning of the card deck with .splice(0,2)
+      and assign the return to the 'hand' property of the player object
 
 // score cards and assign score to players
 Create an object that stores the card rank as the keys and the corresponding score as the value (cardScoring)
@@ -81,11 +79,12 @@ function playGame(players, cardsPerHand) {
   // deal cards to players
   function dealCardsFromDeck(playersObjectsArray, cardsPerPlayer, cardDeck) {
     // assuming we will always have enough cards, otherwise do an if check
-    var dealIters = playersObjectsArray.length * cardsPerPlayer;
-    for (var dealIdx = 0; dealIdx < dealIters; dealIdx++) {
-      var cardDrawn = cardDeck.pop();
-      playersObjectsArray[dealIdx % playersObjectsArray.length].hand.push(cardDrawn);
+    var dealIter = 0;
+    while (dealIter < playersObjectsArray.length) {
+      playersObjectsArray[dealIter].hand = cardDeck.splice(0, cardsPerPlayer);
+      dealIter++;
     }
+
   }
   dealCardsFromDeck(playerProfiles, cardsPerHand, cardDeck);
 
