@@ -16,20 +16,18 @@ function handleInput(event) {
   console.log('---');
 }
 
-var $docForms = document.forms;
-$docForms[0].name.addEventListener('focus', handleFocus);
-$docForms[0].name.addEventListener('blur', handleBlur);
-$docForms[0].name.addEventListener('input', handleInput);
+var $formName = document.querySelector('input#user-name');
+var $formEmail = document.querySelector('input#user-email');
+var $formMessage = document.querySelector('textarea#user-message');
 
-$docForms[0].email.addEventListener('focus', handleFocus);
-$docForms[0].email.addEventListener('blur', handleBlur);
-$docForms[0].email.addEventListener('input', handleInput);
+$formName.addEventListener('focus', handleFocus);
+$formName.addEventListener('blur', handleBlur);
+$formName.addEventListener('input', handleInput);
 
-$docForms[0].message.addEventListener('focus', handleFocus);
-$docForms[0].message.addEventListener('blur', handleBlur);
-$docForms[0].message.addEventListener('input', handleInput);
+$formEmail.addEventListener('focus', handleFocus);
+$formEmail.addEventListener('blur', handleBlur);
+$formEmail.addEventListener('input', handleInput);
 
-// console.log('$docForms: ', $docForms);
-// console.log('$docForms[0]: ', $docForms[0]);
-
-// console.log('$docForms[1]: ', $docForms[1]);
+$formMessage.addEventListener('focus', handleFocus);
+$formMessage.addEventListener('blur', handleBlur);
+$formMessage.addEventListener('input', handleInput);
