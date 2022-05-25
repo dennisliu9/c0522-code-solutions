@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.column-full {
+  width: 100%;
+}
+
+.disp-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-dir-col {
+  flex-direction: column;
+}
+
+.flex-wrap-on {
+  flex-wrap: wrap;
+}
+
+h1.game-text {
+  white-space: pre;
+  font-size: 3rem;
+}
+
+h1 > span {
+  border-bottom: 2px solid transparent;
+}
+
+h1 > span.current-char {
+  border-bottom: 2px solid #f4fffd;
+}
+
+h1 > span.incorrect-char {
+  color: #c3423f;
+  border-bottom-color: #c3423f;
+}
+
+.fresh-char {
+  color: #f4fffd;
+}
+
+.correct-char {
+  color: #9bc53d;
+}
+
+.ff-mono {
+  font-family: "Share Tech Mono", monospace;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+.white-text {
+  color: #f4fffd;
+}
+
+.grey-bg {
+  background-color: #333;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.full-view-height {
+  min-height: 100vh;
+}
+
+.hide {
+  display: none;
+}
+
+.pos-abs {
+  position: absolute;
+}
+
+.center-abs-el {
+  right: 0;
+  left: 0;
+}
