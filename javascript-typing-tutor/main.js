@@ -33,6 +33,30 @@ function for checking user input
 
 Add an event listener on the document to check for keypresses
 */
+// Put phrase to type here
+var typePhrase = 'please go check mdn first';
+typePhrase = typePhrase.toLowerCase();
+
+// Create span elements for the phrase
+var $gameArea = document.querySelector('div#game-area');
+
+function renderTypePhrase(typePhrase) {
+  var $headingContainer = document.createElement('h1');
+  $headingContainer.setAttribute('class', 'game-text disp-flex justify-center align-center');
+  for (var phrIdx = 0; phrIdx < typePhrase.length; phrIdx++) {
+    var $currentSpan = document.createElement('span');
+    $currentSpan.setAttribute('class', 'fresh-char');
+    if (phrIdx === 0) {
+      $currentSpan.className += ' current-char';
+    }
+    $currentSpan.textContent = typePhrase[phrIdx];
+    $headingContainer.appendChild($currentSpan);
+  }
+  return $headingContainer;
+}
+
+var $renderedPhrase = renderTypePhrase(typePhrase);
+$gameArea.insertBefore($renderedPhrase, $gameArea.firstChild);
 
 var $phraseChars = document.querySelectorAll('span');
 var $dialogText = document.querySelector('#dialog-text');
