@@ -177,7 +177,6 @@ h2 {
 /* --Make a nav list horizontal */
 .horiz-nav > li {
   display: inline;
-  margin-left: 20px;
 }
 
 .nav-list a {
@@ -196,6 +195,7 @@ h2 {
   stackoverflow.com/questions/19254411/how-do-i-set-vertical-space-between-list-items
   */
   margin-bottom: 16px;
+  margin-right: 20px;
 }
 
 .link-button {
