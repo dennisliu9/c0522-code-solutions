@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.column-full {
+  width: 100%;
+}
+
+.column-4-5 {
+  width: 80%;
+}
+
+.column-1-10 {
+  width: 10%;
+}
+
+.center-content-on-page {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.jc-ai-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.solid-border {
+  border: solid 4px black;
+}
+
+.fs-large {
+  font-size: 2rem;
+}
+
+.fs-small {
+  font-size: 0.8rem;
+}
+
+.padding-tb-1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+img {
+  max-height: 300px;
+  object-fit: contain;
+}
+
+#prev-chev,
+#next-chev,
+.carousel-indicator {
+  cursor: pointer;
+}
