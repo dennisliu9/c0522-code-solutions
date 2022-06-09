@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScript Carousel</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="center-content-on-page">
   <div class="container solid-border">
     <div class="row">
@@ -16,13 +16,8 @@
         <div class="column-1-10 text-center fs-large">
           <i id="prev-chev" class="fa-solid fa-chevron-left"></i>
         </div>
-        <!-- images -->
         <div class="images-container column-4-5 text-center">
-          <img src="images/001.png" alt="Bulbasaur" class="hidden" data-view="0">
-          <img src="images/004.png" alt="Charmander" class="hidden" data-view="1">
-          <img src="images/007.png" alt="Squirtle" class="hidden" data-view="2">
-          <img src="images/025.png" alt="Pikachu" class="hidden" data-view="3">
-          <img src="images/039.png" alt="Jigglypuff" class="" data-view="4">
+          <!-- DOM created img elements -->
         </div>
         <div class="column-1-10 text-center fs-large">
           <i id="next-chev" class="fa-solid fa-chevron-right"></i>
@@ -30,13 +25,10 @@
       </div>
     </div>
     <div class="circles-container column-full text-center fs-small padding-tb-1">
-      <i class="carousel-indicator fa-solid fa-circle" data-view="0"></i>
-      <i class="carousel-indicator fa-regular fa-circle" data-view="1"></i>
-      <i class="carousel-indicator fa-regular fa-circle" data-view="2"></i>
-      <i class="carousel-indicator fa-regular fa-circle" data-view="3"></i>
-      <i class="carousel-indicator fa-regular fa-circle" data-view="4"></i>
+      <!-- DOM created i elements -->
     </div>
   </div>
   <script src="main.js"></script>
 </body>
+
 </html>
