@@ -31,8 +31,10 @@ app.post('/api/grades', (req, res, next) => {
   grades[nextId] = inputData;
   nextId++;
   res.status(201).send(inputData);
+  // could also do res.status(201).json(inputData)
+  // .send actually converts an object/array to JSON
 
-  next();
+  next(); // this is unnecessary here
 });
 
 app.listen(3000, () => {
