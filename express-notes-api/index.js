@@ -6,19 +6,13 @@ const fs = require('fs');
 
 const data = require('./data.json');
 
-const errorObj = {};
-
 // Retrieve notes
-function getNotes(data, id) {
-  if (!id) {
-    const outputArr = [];
-    for (const key in data.notes) {
-      outputArr.push(data.notes[key]);
-    }
-    return outputArr;
-  } else {
-    return data.notes[id];
+function getNotes(data) {
+  const outputArr = [];
+  for (const key in data.notes) {
+    outputArr.push(data.notes[key]);
   }
+  return outputArr;
 }
 
 app.get('/api/notes', (req, res) => {
@@ -28,21 +22,24 @@ app.get('/api/notes', (req, res) => {
 app.get('/api/notes/:id', (req, res) => {
   const inputId = req.params.id;
   if (Number(inputId) <= 0 || !Number.isInteger(Number(inputId))) {
-    errorObj.error = `ID must be a positive integer. You supplied: '${inputId}'.`;
-    res.status(400).json(errorObj);
+    res.status(400).json({
+      error: `ID must be a positive integer. You supplied: '${inputId}'.`
+    });
   } else if (!data.notes[inputId]) {
-    errorObj.error = `No note was found with supplied ID. You supplied: '${inputId}'.`;
-    res.status(404).json(errorObj);
+    res.status(404).json({
+      error: `No note was found with supplied ID. You supplied: '${inputId}'.`
+    });
   } else {
-    res.status(200).json(getNotes(data, inputId));
+    res.status(200).json(data.notes[inputId]);
   }
 });
 
 // Make new notes
 app.post('/api/notes', (req, res) => {
   if (!req.body.content) {
-    errorObj.error = `content is a required field. The fields you entered were: ${Object.keys(req.body)}`;
-    res.status(400).json(errorObj);
+    res.status(400).json({
+      error: `content is a required field. The fields you entered were: ${Object.keys(req.body)}`
+    });
     return;
   }
   data.notes[data.nextId] = {
@@ -56,9 +53,10 @@ app.post('/api/notes', (req, res) => {
     JSON.stringify(data, null, 2),
     err => {
       if (err) {
-        errorObj.error = 'An unexpected error occurred.';
         console.error('Error occured while writing data.json during post: ', err);
-        res.status(500).json(errorObj);
+        res.status(500).json({
+          error: 'An unexpected error occurred.'
+        });
         return;
       }
       res.status(201).json(newEntry);
@@ -70,12 +68,14 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
   const inputId = req.params.id;
   if (Number(inputId) <= 0 || !Number.isInteger(Number(inputId))) {
-    errorObj.error = `ID must be a positive integer. You supplied: '${inputId}'.`;
-    res.status(400).json(errorObj);
+    res.status(400).json({
+      error: `ID must be a positive integer. You supplied: '${inputId}'.`
+    });
     return;
   } else if (!data.notes[inputId]) {
-    errorObj.error = `No note was found with supplied ID. You supplied: '${inputId}'.`;
-    res.status(404).json(errorObj);
+    res.status(404).json({
+      error: `No note was found with supplied ID. You supplied: '${inputId}'.`
+    });
     return;
   }
   delete data.notes[inputId];
@@ -84,8 +84,9 @@ app.delete('/api/notes/:id', (req, res) => {
     err => {
       if (err) {
         console.error('Error occured while writing data.json during delete: ', err);
-        errorObj.error = 'An unexpected error occurred.';
-        res.status(500).json(errorObj);
+        res.status(500).json({
+          error: 'An unexpected error occurred.'
+        });
         return;
       }
       res.status(204).send();
@@ -97,16 +98,19 @@ app.delete('/api/notes/:id', (req, res) => {
 app.put('/api/notes/:id', (req, res) => {
   const inputId = req.params.id;
   if (Number(inputId) <= 0 || !Number.isInteger(Number(inputId))) {
-    errorObj.error = `ID must be a positive integer. You supplied: '${inputId}'.`;
-    res.status(400).json(errorObj);
+    res.status(400).json({
+      error: `ID must be a positive integer. You supplied: '${inputId}'.`
+    });
     return;
   } else if (!req.body.content) {
-    errorObj.error = `content is a required field. The fields you entered were: ${Object.keys(req.body)}`;
-    res.status(400).json(errorObj);
+    res.status(400).json({
+      error: `content is a required field. The fields you entered were: ${Object.keys(req.body)}`
+    });
     return;
   } else if (!data.notes[inputId]) {
-    errorObj.error = `No note was found with supplied ID. You supplied: '${inputId}'.`;
-    res.status(404).json(errorObj);
+    res.status(404).json({
+      error: `No note was found with supplied ID. You supplied: '${inputId}'.`
+    });
     return;
   }
 
@@ -118,8 +122,9 @@ app.put('/api/notes/:id', (req, res) => {
     err => {
       if (err) {
         console.error('An error occured while writing data.json during update: ', err);
-        errorObj.error = 'An unexpected error occured.';
-        res.status(500).json(errorObj);
+        res.status(500).json({
+          error: 'An unexpected error occured.'
+        });
         return;
       }
       res.status(200).json(updatedEntry);
