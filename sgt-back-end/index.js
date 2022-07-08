@@ -14,8 +14,7 @@ const db = new pg.Pool({
 
 // get grades
 app.get('/api/grades', (req, res, next) => {
-  const sql =
-    `
+  const sql = `
     SELECT *
     FROM "grades";
     `;
@@ -46,10 +45,10 @@ app.post('/api/grades', (req, res, next) => {
     return;
   }
   const sql = `
-  INSERT INTO "grades" ("name", "course", "score") VALUES
-  ($1, $2, $3::INT)
-  RETURNING *;
-  `;
+    INSERT INTO "grades" ("name", "course", "score") VALUES
+    ($1, $2, $3::INT)
+    RETURNING *;
+    `;
   const params = [inputGrade.name, inputGrade.course, inputGrade.score];
 
   db.query(sql, params)
@@ -84,13 +83,13 @@ app.put('/api/grades/:gradeId', (req, res, next) => {
   }
 
   const sql = `
-        UPDATE "grades"
-        SET "name" = $2,
-            "course" = $3,
-            "score" = $4
-        WHERE "gradeId" = $1
-        RETURNING *;
-        `;
+    UPDATE "grades"
+    SET "name" = $2,
+        "course" = $3,
+        "score" = $4
+    WHERE "gradeId" = $1
+    RETURNING *;
+    `;
   const params = [inputGradeId, inputGrade.name, inputGrade.course, inputGrade.score];
   db.query(sql, params)
     .then(result => {
@@ -122,10 +121,10 @@ app.delete('/api/grades/:gradeId', (req, res, next) => {
   }
 
   const sql = `
-  DELETE FROM "grades"
-  WHERE "gradeId" = $1
-  RETURNING *;
-  `;
+    DELETE FROM "grades"
+    WHERE "gradeId" = $1
+    RETURNING *;
+    `;
   const params = [inputGradeId];
   db.query(sql, params)
     .then(result => {
