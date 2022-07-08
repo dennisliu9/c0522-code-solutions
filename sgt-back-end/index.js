@@ -53,7 +53,7 @@ app.post('/api/grades', (req, res, next) => {
 
   db.query(sql, params)
     .then(result => {
-      res.status(200).json(result.rows[0]);
+      res.status(201).json(result.rows[0]);
     })
     .catch(error => {
       console.error('An error occurred during POST: ', error);
