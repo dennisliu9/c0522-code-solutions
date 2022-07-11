@@ -1,4 +1,8 @@
 function reduce(array, reducer, initialValue) {
+  // edge case: one element array
+  if (array.length === 1) {
+    return array[0];
+  }
 
   let currentIndex;
   let previousValue;
