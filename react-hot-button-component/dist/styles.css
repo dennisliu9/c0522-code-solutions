@@ -1,0 +1,49 @@
+button {
+  padding: 10px 20px;
+  border: 2px solid black;
+  box-shadow: 3px 5px 0 black;
+  background-color: darkmagenta;
+  color: white;
+  font-family: "Comic Sans MS", sans-serif;
+  font-weight: 600;
+}
+
+button:hover {
+  filter: brightness(1.2);
+}
+
+button:active {
+  /* filter: brightness(1) saturate(1.3); */
+  transform: translateY(2px);
+  box-shadow: 3px 3px 0 black;
+}
+
+.temp1 {
+  background-color: #351c75;
+  color: white;
+}
+
+.temp2 {
+  background-color: #674ea7;
+  color: white;
+}
+
+.temp3 {
+  background-color: #e06666;
+  color: white;
+}
+
+.temp4 {
+  background-color: #f6b26b;
+  color: black;
+}
+
+.temp5 {
+  background-color: #ff0;
+  color: black;
+}
+
+.temp6 {
+  background-color: white;
+  color: black;
+}
