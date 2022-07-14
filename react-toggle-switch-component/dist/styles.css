@@ -38,6 +38,7 @@
   background-color: white;
   position: relative;
   top: calc(-1 * var(--toggle-slider-border));
+  transition: left 50ms ease-in;
 }
 
 .toggle-slider.off {

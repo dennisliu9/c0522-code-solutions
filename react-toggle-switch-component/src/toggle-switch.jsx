@@ -16,9 +16,9 @@ export default class ToggleSwitch extends React.Component {
   render() {
     const toggleStatus = (this.state.isOn) ? 'on' : 'off';
     return (
-    <div className='toggle-container'>
+    <div className='toggle-container' onClick={this.toggleToggle}>
       <div className={'toggle-background ' + toggleStatus}>
-        <div className={'toggle-slider ' + toggleStatus} onClick={this.toggleToggle}></div>
+        <div className={'toggle-slider ' + toggleStatus}></div>
       </div>
       <div className='toggle-label'>{toggleStatus.toUpperCase()}</div>
     </div>
