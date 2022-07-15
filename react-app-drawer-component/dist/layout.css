@@ -1,0 +1,28 @@
+.container {
+  width: 1000px;
+  margin: auto 0;
+}
+
+.row {
+  display: flex;
+}
+
+.column-full {
+  width: 100%;
+}
+
+.flex-col {
+  display: flex;
+}
+
+.page-center {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
