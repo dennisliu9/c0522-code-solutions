@@ -1,0 +1,39 @@
+.container {
+  width: 400px;
+  margin: auto 0;
+}
+
+.row {
+  display: flex;
+}
+
+.col-full {
+  width: 100%;
+}
+
+.flex-col {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.contents-page-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
