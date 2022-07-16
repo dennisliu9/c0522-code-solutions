@@ -1,0 +1,15 @@
+.invisible {
+  visibility: hidden;
+}
+
+.color-error {
+  color: red;
+}
+
+.color-success {
+  color: rgb(107 168 79);
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
