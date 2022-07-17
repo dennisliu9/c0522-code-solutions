@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+.accordion-container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.topic {
+  background-color: rgb(150 150 150);
+  border: 1px solid black;
+  padding: 10px 5px;
+}
+
+.topic:hover {
+  cursor: pointer;
+}
+
+.topic-detail {
+  background-color: white;
+  border: 1px solid black;
+  padding: 0 5px;
+}
+
+.topic-detail.hidden {
+  display: none;
+}
+
+.ff-sans {
+  font-family: "Trebuchet MS", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fw-light {
+  font-weight: 200;
+}
+
+.fw-normal {
+  font-weight: 400;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
