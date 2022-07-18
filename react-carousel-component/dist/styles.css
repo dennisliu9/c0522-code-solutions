@@ -1,0 +1,84 @@
+i:hover,
+button:hover {
+  cursor: pointer;
+}
+
+.hidden-image {
+  display: none;
+}
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.column-4-5 {
+  width: 80%;
+}
+
+.column-1-10 {
+  width: 10%;
+}
+
+.flex-col {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.fs-2 {
+  font-size: 2rem;
+}
+
+.fs-1 {
+  font-size: 1rem;
+}
+
+.mlr-5 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.image-fit {
+  object-fit: cover;
+  max-width: 100%;
+  height: 300px;
+}
+
+.page-center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.arrow-button {
+  border: none;
+  background-color: transparent;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.arrow-button:hover {
+  border-radius: 50%;
+  background-color: rgb(238 238 238);
+}
+
+.arrow-button:active {
+  background-color: lightgrey;
+}
