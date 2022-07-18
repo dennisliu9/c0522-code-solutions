@@ -5,7 +5,6 @@ export default class Carousel extends React.Component {
     super(props);
     this.state = {
       currentImageIndex: 0,
-      maxImageIndex: this.props.imagesArray.length - 1,
       intervalId: null
     };
     this.generateImages = this.generateImages.bind(this);
@@ -30,12 +29,14 @@ export default class Carousel extends React.Component {
   }
 
   changeImage(keyValue) {
+    const maxImageIndex = this.props.imagesArray.length - 1;
+
     if (keyValue === undefined) {
       this.changeImage(this.state.currentImageIndex + 1);
-    } else if (keyValue > this.state.maxImageIndex) {
+    } else if (keyValue > maxImageIndex) {
       this.setState({ currentImageIndex: 0 });
     } else if (keyValue < 0) {
-      this.setState({ currentImageIndex: this.state.maxImageIndex });
+      this.setState({ currentImageIndex: maxImageIndex });
     } else {
       this.setState({ currentImageIndex: keyValue });
     }
