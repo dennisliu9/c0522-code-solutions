@@ -43,7 +43,6 @@ export default class App extends React.Component {
     * of the old array, plus the object returned by the server.
     */
 
-    const prevStateTodos = [...this.state.todos];
     // newTodo: { task: 'user input string', isCompleted: 'false' }
     fetch('api/todos', {
       method: 'POST',
@@ -54,7 +53,7 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(newEntry => this.setState({
-        todos: prevStateTodos.concat(newEntry)
+        todos: this.state.todos.concat(newEntry)
       }))
       .catch(err => console.error('Fetch failed during addTodo(): ', err));
   }
@@ -81,7 +80,7 @@ export default class App extends React.Component {
      * TIP: Be sure to SERIALIZE the updates in the body with JSON.stringify()
      * And specify the "Content-Type" header as "application/json"
      */
-    const clickedTodoItem = this.state.todos.filter(todoItem => todoItem.todoId === todoId)[0];
+    const clickedTodoItem = this.state.todos.find(todoItem => todoItem.todoId === todoId);
     const newIsCompleted = { isCompleted: !clickedTodoItem.isCompleted };
 
     fetch(`api/todos/${todoId}`, {
@@ -93,8 +92,7 @@ export default class App extends React.Component {
     })
       .then(response => response.json())
       .then(updatedEntry => {
-        const prevStateTodos = [...this.state.todos];
-        this.setState({ todos: prevStateTodos.map(todoItem => (todoItem.todoId === todoId) ? updatedEntry : todoItem) });
+        this.setState({ todos: this.state.todos.map(todoItem => (todoItem.todoId === todoId) ? updatedEntry : todoItem) });
       })
       .catch(err => console.error('Fetch failed during toggleCompleted(): ', err));
   }
