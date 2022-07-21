@@ -1,0 +1,106 @@
+# Initial Setup
+  * Database is started and necessary schema is created
+  * Server app is prepared with file server/index.js
+    * Express server is set up with connection to Postgresql database
+    * Two POST routes are set up, one for signing up and one for signing in
+      * Sign in:
+        * Assuming a client provided a valid request, the database is queried for the provided username value
+        * If the user is found, the userId and hashed password are returned from the database
+        * argon2 is used to verify that the hashed password matches the client provided password (after hashing)
+          * If it does match, the client receives the userId, username, and a signed JWT token
+            * The token has been signed using the token secret specific to this application, specified in the .env file
+      * Sign up:
+        * Assuming a client provided a valid request, the client provided password is hashed with argon2
+        * The provided username and hashed password are included in a SQL statement that inserts a new record into the "users" table
+        * Upon successful insertion, the userId, username, and timestamp of record creation are returned to the cleint
+
+
+# User can sign up
+  * (Express server is set up as described above)
+  * By clicking the various "Sign Up" buttons on the page (Navbar, AuthForm), the action is set to "sign-up"
+  * When user fills out the information and submits the form, the handleSubmit method is called which sends a POST request to route 'api/auth/sign-up' with the entered username and password in the body
+    * Express handles the request:
+      * Assuming a client provided a valid request, the client provided password is hashed with argon2
+      * The provided username and hashed password are included in a SQL statement that inserts a new record into the "users" table
+      * Upon successful insertion, the userId, username, and timestamp of record creation are returned to the cleint
+    * If the request was successful, the URL hash is changed to "sign-in" and the AuthForm re-renders with that value passed in as a prop
+      * (Because the event listener on the App component for hashchange events triggers when this happens and the handler updates the App component's state, a re-render is triggered)
+  * The user is then set up (or an error is thrown somewhere along the way)
+
+# User can sign in
+  * By entering in a username and password into the rendered AuthForm component, the AuthForm's state is updated with the entered values
+  * When the user clicks on a submit button with his login details, a POST request is sent to route 'api/auth/sign-in' with the entered username and password as the body
+    * Express handles the request:
+      * Assuming a client provided a valid request, the database is queried for the provided username value
+      * If the user is found, the userId and hashed password are returned from the database
+      * argon2 is used to verify that the hashed password matches the client provided password (after hashing)
+        * If it does match, the client receives the userId, username, and a signed JWT token
+          * The token has been signed using the token secret specific to this application, specified in the .env file
+    * Upon successful authentication, the handleSubmit method continues and calls the App component's handleSignIn() method (passed to the AuthForm component as a prop from the Auth component) with the returned values from the database
+      * handleSignIn() then saves the token to localStorage under the key 'react-context-jwt' and sets the user value of App's state to the user value
+      * By setting the state of the App component, a re-render of App is triggered
+        * The App component creates an Auth component again
+          * The component checks if there is a truthy user value in the context (passed there from App's state)
+          * Because there now is a truthy user value, the Auth component returns a Redirect component that redirects to the Home component
+            * We see the wonderful content, as we should because we're signed in and have a token to prove it!
+            * (Because the code only checks if user has a truthy value and not a specific value, the Home page can be accessed by simply putting anything into the user property of the App's state object)
+
+# User can stay signed in (event if they refresh the page)
+  * Upon refreshing the page, the App component gets created
+  * The App component's componentDidMount() lifecycle method gets called which retrieves the token saved in localStorage
+    * Assuming there is a token saved, it will be decoded and the App's state will be updated with the user information
+    * The state update causes a re-render and the renderPage() method will be called
+      * This returns a Home component, which upon rendering will check for a truthy user value in the context (put there from App's state)
+        * Because there is one in the state (from the decoded token in localStorage), we are not redirected to a sign-in AuthForm component but instead see the sewer dancer
+
+# User can sign out
+  * The App component creates a Navbar component in its render() method
+    * The Navbar component gets App's handleSignOut method through the context
+    * The Navbar component's render() method checks if the user is populated (through the context, from the App's state) and renders a Sign out button if true
+      * The handleSignOut method is attached to a sign out button
+      * The handleSignOut method clears the token from local storage and removes the user from the App's state, which will have a cascade effect leading the client back to the AuthForm page
+
+
+
+
+# Extra walkthrough/notes
+  * Client app/interface loads when a client accesses the URL (I believe this is specified as a path to server/public/index.html in the output property of webpack.config.js?)
+    * client/index.jsx is loaded, which has a render() that will call an App component from app.jsx
+      * The App component is defined and AppContext is tied to various components
+      * App's render() checks if the App's state's isAuthorizing property is true
+        * If it's false, the user and route properties of the App's state are destructured into two variables
+        * Then the App's two methods, handleSignIn and handleSignOut, are destructured into two variables
+        * The four variables in an object are then provided as a context value to the tree that App will render
+          * App renders a context provider, a Navbar, and a PageContainer
+            * The route property is checked to determine what type of component should be inside the PageContainer component
+              * If it's blank, a Home component is returned
+              * If it's "sign-in" or "sign-up", then an Auth component is returned
+              * Otherwise, a NotFound component is returned
+            * Home and NotFound components are simple pages with some basic elements, nothing too crazy
+            * In the Auth component, some properties of the context object are destructured into three variables (user, route, handleSignIn)
+              * If the user is truthy (that is, if there is indeed a user value), we are redirected to a Home
+                * the Redirect component takes a prop named "to" and has logic to change the URL hash to just "#" which ends up with the App component giving us the Home component
+              * If there is no user value, the path property of route (from the context) is checked
+                * Depending on if "sign-in" is the value, a different welcome message is displayed on the page
+                * Other HTML is rendered
+                * An AuthForm component (from ../components/auth-form.jsx) is created with a key and two props, action (which is sign-in/up) and onSignIn (which is the handleSignIn method)
+            * AuthForm:
+              * The AuthForm component is constructed in a typical way, with a state that has two properties of username and password, both empty strings at first
+              * Within the render(), some conditional logic sets some values based on if the prop action is sign-up or sign-in
+                * Two input elements are created, one for the username and the other for a password
+                * When changes are made (letters are typed), the state (and the displayed element) is updated
+                * Upon submission, the handleSubmit() method is called
+                  * This method sends a POST request to the route specific to the provided prop action
+                  * If a sign-up was successfully submitted, the page is then changed to the sign-in page
+                  * If it was a successful sign-in, the result of the POST request should return a non-blank user and a non-blank token
+                    * These are then passed as arguments to the App's handleSignIn method (passed to this AuthForm component as a prop from the Auth component)
+                    * handleSignIn() then saves the token to localStorage under the key 'react-context-jwt' and sets the user value of App's state to the user value
+                      * Note: by saving the token to local storage, we stayed logged in because the token retrieved upon the App component mounting
+                      * By setting the state of the App component, a re-render of App is triggered
+                        * The App component creates an Auth component
+                          * The component checks if there is a truthy user value in the context (passed there from App's state)
+                            * Because there now is a truthy user value, the Auth component returns a Redirect component that redirects to the Home component
+                            * We see the wonderful content, as we should because we're signed in and have a token to prove it!
+        * The App component creates a Navbar component in its render() method
+          * The Navbar component gets App's handleSignOut method through the context, and the method is attached to a sign out button
+            * The handleSignOut method clears the token from local storage and removes the user from the App's state, which will have a cascade effect leading the client back to the AuthForm page
