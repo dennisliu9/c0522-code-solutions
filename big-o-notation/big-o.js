@@ -9,8 +9,8 @@ function uniqueLinear(words) {
     i++                             // 2 * n = O(2n) ~= O(n) -- Why is this 2 simple operations instead of 3 (retrieve, add, reassign)? resolves to the same anyway; Happens n times, once each iteration
   ) {
     const word = words[i];          // 2 * n = O(2n) ~= O(n) -- Lookup value in words, assign value; Happens once every iteration of the loop
-    if (!seen[word]) {              // 2 * n = O(2n) ~= O(n) -- Lookup key in object, truth test; Happens every iteration
-      seen[word] = true;            // 1 * 1 = O(1) -- Assignment is a simple operation
+    if (!seen[word]) {              // 3 * n = O(3n) ~= O(n) -- Lookup key in object, flip it, truth test; Happens every iteration
+      seen[word] = true;            // 2 * n = O(2n) ~= O(n) -- Assignment is a simple operation + accessing an index is a simple index, happens inside the loop
       unique[unique.length] = word; // 3 * n = O(3n) ~= O(n) -- 3 simple operations (get length, lookup value, assignment); in the worst-case scenario, it happens every iteration
     }
   }
@@ -27,12 +27,12 @@ function uniqueQuadratic(words) {
     const word = words[i];          // 2 * n = O(2n) ~= O(n)
     let isUnique = true;            // 1 * n = O(n)
     for (
-      let c = 0;                    // 1 * 1 = O(1)
+      let c = 0;                    // 1 * n = O(n) -- c gets set each iteration of the outside library
       c < i;                        // 1 * n^2 = O(n^2) -- one simple operation; happens every iteration of the outside loop and every iteration of the inside loop
-      c++                           // 2 * n = O(2n) ~= O(n)
+      c++                           // 2 * n^2 = O(2n^2) ~= O(n^2) -- addition and assignment, happens each iteration of both loops
     ) {
       const comparing = words[c];   // 2 * n^2 = O(2n^2) ~= O(n^2)
-      if (comparing === word) {     // 1 * n^2 = O(n^2)
+      if (comparing === word) {     // 2 * n^2 = O(2n^2) ~= O(n^2) -- if statement is a test, truth evaluation of comparing === word
         isUnique = false;           // 1 * n^2 = O(n^2) -- one simple operation; in worst case scenario, happens every iteration of the parent loop and every iteration of grandparent loop
       }
     }
